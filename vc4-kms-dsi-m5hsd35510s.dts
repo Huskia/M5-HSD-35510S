@@ -1,0 +1,56 @@
+// compile: dtc -@ -I dts -O dtb -o vc4-kms-dsi-m5hsd35510s.dtbo vc4-kms-dsi-m5hsd35510s.dts
+
+/dts-v1/;
+/plugin/;
+
+/ {
+        compatible = "brcm,bcm2835";
+
+        fragment@0 {
+                target = <&dsi1>;
+                __overlay__{
+                        status = "okay";
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+                        port {
+                                dsi_out_port:endpoint {
+                                        remote-endpoint = <&panel_dsi_port>;
+                                };
+                        };
+
+                        m5hsd35510s:m5hsd35510s@0 {
+                                compatible    = "m5,m5hsd35510s";
+                                status        = "okay";
+                                reg           = <0>;
+                                reset-gpios   = <&gpio 45 1>;   // GPIO45
+                                backlight-gpios  = <&gpio 44 0>;    // LCD Enable
+                                rotation      = <90>;
+                                port {
+                                        panel_dsi_port: endpoint {
+                                                remote-endpoint = <&dsi_out_port>;
+                                        };
+                                };
+                        };
+                };
+        };
+
+        fragment@1 {
+                target = <&gpio>;
+                __overlay__ {
+                        m5hsd35510s_pins: m5hsd35510s_pins {
+                                brcm,pins = <45 44>;
+                                brcm,function = <1 1>; // out
+                                brcm,pull = <0 0>; // off
+                        };
+                };
+
+        };
+
+        __overrides__ {
+                reset = <&m5hsd35510s_pins>,"brcm,pins:45",
+                        <&m5hsd35510s>,"reset-gpios:45";
+                backlight = <&m5hsd35510s_pins>,"brcm,pins:44",
+                        <&m5hsd35510s>,"backlight-gpios:44";
+        };
+
+};
