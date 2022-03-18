@@ -1,4 +1,5 @@
 # M5-HSD-35510S MIPI Driver for Raspberry pi
+## Brief
 This is a mipi screen driver for raspberry pi and it has been tested on Raspberry pi 3b+ and Raspberry pi 4b. It uses 2 lanes of MIPI dsi socket on raspberry, and the SCL pin (GPIO45) is served as screen reset, SDA pin (GPIO44) is served as backlight control.
 ![image](https://github.com/Huskia/M5-HSD-35510S/blob/main/doc/img/20220317_190417.jpg)
 ## Usage
@@ -9,7 +10,7 @@ After your raspberry booted, install raspberrypi-kernel-headers.
 sudo apt update
 sudo apt install raspberrypi-kernel-headers
 ```
-Then create a new folder wherever you want and create 3 files: "Makefile", "panel-xxx-xxx.c", "vc4-kms-dsi-xxx.dts". You can refer to the source code below. When you finish these files, run `make` and it will start building automatically. If build success, a "panel-xxx-xxx.ko" file will show in folder.  
+Then create a new folder wherever you want and create 3 files: "Makefile", "panel-xxx-xxx.c", "vc4-kms-dsi-xxx.dts". You can refer to the source code. When you finish these files, run `make` and it will start building automatically. If build success, a "panel-xxx-xxx.ko" file will show in folder.  
 Next bulid device tree and copy them to corresponding folder.  
 ```
 dtc -@ -I dts -O dtb -o vc4-kms-dsi-xxx.dtbo vc4-kms-dsi-xxx.dts
