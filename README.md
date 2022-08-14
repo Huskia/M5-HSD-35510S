@@ -1,7 +1,9 @@
 # M5-HSD-35510S MIPI Driver for Raspberry pi
 ## Brief
 This is a mipi screen driver for raspberry pi and it has been tested on Raspberry pi 3b+ and Raspberry pi 4b. It uses 2 lanes of MIPI dsi socket on raspberry, and the SCL pin (GPIO45) is served as screen reset, SDA pin (GPIO44) is served as backlight control.
-![image](https://github.com/Huskia/M5-HSD-35510S/blob/main/doc/img/20220317_190417.jpg)
+![image](https://github.com/Huskia/M5-HSD-35510S/blob/main/doc/img/20220814_111057.jpg)
+## Update
+* 2022-8-14 Kernal 5.15 is supported.
 ## Usage
 If you want to build your own screen driver, follow instructions will help.  
 First, download raspberry pi official image, in this case the image is 64-bit bullseye version. Burn the image into a TF card and boot your raspberry pi.   
