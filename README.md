@@ -16,11 +16,11 @@ Then create a new folder wherever you want and create 3 files: "Makefile", "pane
 Next bulid device tree and copy them to corresponding folder.  
 ```
 dtc -@ -I dts -O dtb -o vc4-kms-dsi-xxx.dtbo vc4-kms-dsi-xxx.dts
-sudo cp vc4-kms-dsi-xxx.dtbo /boot/overlays/
+sudo cp vc4-kms-dsi-xxx.dtbo /boot/overlays/ （or "/boot/firmware/overlays" in Ubuntu)
 sudo cp panel-xxx-xxx.ko /lib/modules/`uname -r`/kernel/drivers/gpu/drm/panel
 sudo depmod
 ```
-Finally edit /boot/config.txt and add parameters below to enable the driver.  
+Finally edit /boot/config.txt（or "/boot/firmware/config.txt" in Ubuntu) and add parameters below to enable the driver.  
 ```
 ignore_lcd=1
 dtoverlay=vc4-kms-dsi-xxx # Same as dtbo file name
