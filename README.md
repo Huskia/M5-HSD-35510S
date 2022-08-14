@@ -7,7 +7,7 @@ This is a mipi screen driver for raspberry pi and it has been tested on Raspberr
 ## Usage
 If you want to build your own screen driver, follow instructions will help.  
 First, download raspberry pi official image, in this case the image is 64-bit bullseye version. Burn the image into a TF card and boot your raspberry pi.   
-After your raspberry booted, install raspberrypi-kernel-headers.  
+After your raspberry booted, install raspberrypi-kernel-headers.  (If you use Ubuntu image, skip this step.)
 ```
 sudo apt update
 sudo apt install raspberrypi-kernel-headers
